@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CredenciaisDTO } from 'src/app/models/Credenciais.dto';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
 
   constructor(public router: Router,
      public auth: AuthService,
-     public storage: StorageService
+     public storage: StorageService,
+     public menu: MenuController
 ) { 
 
   }
@@ -36,6 +38,15 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  ionViewWillEnter (){
+    this.menu.swipeGesture(false);
+
+  }
+
+  ionViewWillLeave (){
+    this.menu.swipeGesture(true);
   }
 
 }

@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title style="text-align: center;">Tela de Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
+  <img src="assets/img/slide-2.png" alt="logo">
+
   <form>
+
 
     <ion-item>
       <ion-label> Email</ion-label>
@@ -19,7 +22,7 @@
       <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
     </ion-item>
 
-    <button ion-button block (click)="login()">Entrar</button>
+    <ion-button expand="block" color="primary" (click)="login()">Entrar</ion-button>
   </form> 
 
 </ion-content>
