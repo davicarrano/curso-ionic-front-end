@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaDTO } from 'src/app/models/Categoria.dto';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categoria',
@@ -11,7 +12,8 @@ export class CategoriaPage implements OnInit {
 
   categorias : CategoriaDTO[];
 
-  constructor(public categoriaService: CategoriaService) { 
+  constructor(public categoriaService: CategoriaService,
+              public route: Router) { 
 
   }
 
@@ -21,6 +23,10 @@ export class CategoriaPage implements OnInit {
     },erro=>{
       console.error(erro);
     })
+  }
+
+  carregarProdutosCategoria(categoria: CategoriaDTO){
+    this.route.navigate([`produto/${categoria.id}/${categoria.nome}`]);
   }
 
 }

@@ -4,6 +4,7 @@ import { CredenciaisDTO } from 'src/app/models/Credenciais.dto';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { MenuController } from '@ionic/angular';
+import { LocalUser } from 'src/app/models/local-user';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +38,10 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    
+    let localUser :LocalUser = this.storage.getLocalUser();
+    if (localUser!=null){
+      this.router.navigate(['folder/Inbox']);
+    }
   }
 
   ionViewWillEnter (){

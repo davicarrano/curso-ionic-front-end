@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes do Produto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{produto.nome}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{produto.preco}}
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-item>
+    <ion-label position="floating">Quantidade</ion-label>
+    <ion-input [(ngModel)]="quantidade" expand="block" placeholder="Entre com a Quantidade"></ion-input>
+  </ion-item>
+  
+  <ion-button expand="block"  color="primary" (click)="adicionarCarrinhoCompras()">Add Carrinho</ion-button>
+  
+
+</ion-content>
