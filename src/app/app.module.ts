@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoriaService } from './services/categoria.service';
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 import { ProdutoService } from './services/produto.service';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { ProdutoService } from './services/produto.service';
     CategoriaService,
     AuthInterceptorProvider,
     ProdutoService,
+    CartService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
