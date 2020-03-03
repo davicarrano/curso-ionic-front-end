@@ -18,6 +18,11 @@ export class AppComponent implements OnInit {
       icon: 'mail'
     },
     {
+      title: 'Carrinho',
+      url: '/cart',
+      icon: 'mail'
+    },
+    {
       title: 'Categorias',
       url: '/categoria',
       icon: 'archive'

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Carrinho de Compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of cart.items">
+    <ion-card-header>
+      <ion-card-subtitle>Qtd: {{item?.quantidade}}</ion-card-subtitle>
+      <ion-card-title>{{item?.produto.nome}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{item?.produto.preco | currency}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="cart.items.length == 0">
+    <ion-card-header>
+      <ion-card-title>Carrinho vazio</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      ----------------
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button *ngIf="cart.items.length != 0" expand="full" color="danger" (click)="apagarCarrinho()">Apagar carrinho</ion-button>
+  <ion-button expand="full" color="primary" (click)="addNovoItem()">Adicionar Novo Item</ion-button>
+
+</ion-content>

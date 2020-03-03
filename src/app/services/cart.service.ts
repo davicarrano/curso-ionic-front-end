@@ -24,7 +24,16 @@ export class CartService {
 
     addProduto(quant:number, prod: ProdutoDTO):Cart{
         let cart: Cart = this.getCart();
-        //position do produto no carrinho
-        cart.items.push({quantidade:quant, produto:prod});
+        let position = cart.items.findIndex(x => x.produto.id == prod.id);
+        if (position == -1){
+            cart.items.push({quantidade:quant, produto:prod});
+        }
+        this.storageService.setCart(cart);
+        return cart;
+        
+    }
+
+    apagarCarrinho(){
+        this.storageService.setCart(null);
     }
 }

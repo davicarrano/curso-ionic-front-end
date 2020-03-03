@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProdutoDTO } from 'src/app/models/Produto.dto';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-produto-detalhe',
@@ -11,7 +12,9 @@ export class ProdutoDetalhePage implements OnInit {
 
   quantidade: number;
   produto: ProdutoDTO;
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private cartService: CartService,
+              private route: Router) {
     this.produto = JSON.parse(this.activatedRoute.snapshot.paramMap.get('produto'));
    }
 
@@ -19,7 +22,8 @@ export class ProdutoDetalhePage implements OnInit {
   }
 
   adicionarCarrinhoCompras(){
-    
+    this.cartService.addProduto(this.quantidade, this.produto);
+    this.route.navigate(['cart']);
   }
 
 }
