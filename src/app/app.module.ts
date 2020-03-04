@@ -16,6 +16,8 @@ import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 import { ProdutoService } from './services/domain/produto.service';
 import { CartService } from './services/cart.service';
 import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClienteService } from './services/domain/cliente.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +26,9 @@ import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,
@@ -36,7 +40,13 @@ import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
     ErrorInterceptorProvider,
     ProdutoService,
     CartService,
+    ClienteService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
+  exports:[
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   bootstrap: [AppComponent]
 })

@@ -20,13 +20,19 @@ export class AppComponent implements OnInit {
     {
       title: 'Carrinho',
       url: '/cart',
-      icon: 'mail'
+      icon: 'cart'
     },
     {
       title: 'Categorias',
       url: '/categoria',
-      icon: 'archive'
+      icon: 'list'
+    },
+    {
+      title: 'Signup',
+      url: '/signup',
+      icon: 'log-in'
     }
+
   ];
 
   constructor(
