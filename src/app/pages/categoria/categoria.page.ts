@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaDTO } from 'src/app/models/Categoria.dto';
-import { CategoriaService } from 'src/app/services/categoria.service';
+import { CategoriaService } from 'src/app/services/domain/categoria.service';
+
 import { Router } from '@angular/router';
 
 @Component({

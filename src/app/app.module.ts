@@ -11,9 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { StorageService } from './services/storage.service';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoriaService } from './services/categoria.service';
+import { CategoriaService } from './services/domain/categoria.service' ;
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
-import { ProdutoService } from './services/produto.service';
+import { ProdutoService } from './services/domain/produto.service';
 import { CartService } from './services/cart.service';
 import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 

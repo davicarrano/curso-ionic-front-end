@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProdutoDTO } from '../models/Produto.dto';
-import { API_CONFIG } from '../config/api.config';
+import { ProdutoDTO } from '../../models/Produto.dto';
+import { API_CONFIG } from '../../config/api.config';
 
 @Injectable()
 export class ProdutoService{
