@@ -10,7 +10,6 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProdutoDetalhePage implements OnInit {
 
-  quantidade: number;
   produto: ProdutoDTO;
   constructor(private activatedRoute: ActivatedRoute,
               private cartService: CartService,
@@ -22,7 +21,7 @@ export class ProdutoDetalhePage implements OnInit {
   }
 
   adicionarCarrinhoCompras(){
-    this.cartService.addProduto(this.quantidade, this.produto);
+    this.cartService.addProduto(this.produto);
     this.route.navigate(['cart']);
   }
 

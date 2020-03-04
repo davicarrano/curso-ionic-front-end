@@ -11,12 +11,15 @@
 <ion-content>
   <ion-card *ngFor="let item of cart.items">
     <ion-card-header>
-      <ion-card-subtitle>Qtd: {{item?.quantidade}}</ion-card-subtitle>
       <ion-card-title>{{item?.produto.nome}}</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      {{item?.produto.preco | currency}}
+      <ion-icon color="primary" name="add-circle" (click)="incrementarQuantidadeProduto(item?.produto)"></ion-icon>
+      Qtd: {{item?.quantidade}}
+      <ion-icon color="primary" name="remove-circle" (click)="decrementarQuantidadeProduto(item?.produto)"></ion-icon>
+      <ion-icon color="danger" name="trash-outline" (click)="removerProduto(item?.produto)"></ion-icon>
+      <p>Preço: {{item?.produto.preco | currency}}</p>
     </ion-card-content>
   </ion-card>
 
@@ -30,7 +33,15 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-button *ngIf="cart.items.length != 0" expand="full" color="danger" (click)="apagarCarrinho()">Apagar carrinho</ion-button>
+  <ion-card *ngIf="cart.items.length != 0">
+    <ion-card-header>
+      <ion-card-title>Total: {{total()}}</ion-card-title>
+    </ion-card-header>
+  
+  </ion-card>
+
+
   <ion-button expand="full" color="primary" (click)="addNovoItem()">Adicionar Novo Item</ion-button>
+  <ion-button *ngIf="cart.items.length != 0" expand="full" color="danger" (click)="apagarCarrinho()">Apagar carrinho</ion-button>
 
 </ion-content>

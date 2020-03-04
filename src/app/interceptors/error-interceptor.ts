@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { StorageService } from "../services/storage.service";
-import { AlertController } from "ionic-angular";
+import { AlertController } from '@ionic/angular';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor{
@@ -12,7 +12,7 @@ export class ErrorInterceptor implements HttpInterceptor{
     }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
         return next.handle(req)
-            .catch((error,caught) => {
+            .toPromise().catch((error) => {
                 let errorObj = error;
                 if(errorObj.error){
                     errorObj = errorObj.error;
@@ -33,18 +33,18 @@ export class ErrorInterceptor implements HttpInterceptor{
                 }
                 return Observable.throw(errorObj);
             }) as any;
+
+            
     }
     
-    handle401(){
-        let alert = this.alertController.create({
-            title: 'Erro 401: falha de autenticação',
+    async handle401(){
+        let alert = await this.alertController.create({
             message: 'Email ou senha incorretos',
-            enableBackdropDismiss:false,
-            buttons:[
+            backdropDismiss: false,
+            buttons: [
                 {
                     text: 'OK'
                 }
-
             ]
         });
         alert.present();

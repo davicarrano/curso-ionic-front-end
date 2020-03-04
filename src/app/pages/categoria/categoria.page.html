@@ -10,6 +10,12 @@
 
 <ion-content>
 
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button href="cart">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-list *ngFor="let cat of categorias">
     <ion-item (click)="carregarProdutosCategoria(cat)">
       <ion-label>{{cat.nome}}</ion-label>

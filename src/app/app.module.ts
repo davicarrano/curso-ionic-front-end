@@ -15,6 +15,7 @@ import { CategoriaService } from './services/categoria.service';
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 import { ProdutoService } from './services/produto.service';
 import { CartService } from './services/cart.service';
+import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { CartService } from './services/cart.service';
     AuthService,
     CategoriaService,
     AuthInterceptorProvider,
+    ErrorInterceptorProvider,
     ProdutoService,
     CartService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
