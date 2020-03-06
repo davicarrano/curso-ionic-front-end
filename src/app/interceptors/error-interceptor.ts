@@ -3,16 +3,21 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { StorageService } from "../services/storage.service";
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Cart } from '../models/Cart';
+import { LocalUser } from '../models/local-user';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor{
-    constructor(public storageService: StorageService,
-                public alertController: AlertController){
+    constructor(private storageService: StorageService,
+                private alertController: AlertController,
+                private route: Router){
 
     }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-        return next.handle(req)
-            .toPromise().catch((error) => {
+        return next.handle(req)            
+            .toPromise()
+            .catch((error) => {
                 let errorObj = error;
                 if(errorObj.error){
                     errorObj = errorObj.error;
@@ -53,6 +58,7 @@ export class ErrorInterceptor implements HttpInterceptor{
 
     handle403(){
         this.storageService.setLocalUser(null);
+        this.route.navigate(['login']);
     }
 }
 

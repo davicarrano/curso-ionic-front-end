@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { MenuController } from '@ionic/angular';
 import { LocalUser } from 'src/app/models/local-user';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginPage implements OnInit {
   constructor(public router: Router,
      public auth: AuthService,
      public storage: StorageService,
-     public menu: MenuController
+     public menu: MenuController,
+     private cartService: CartService
 ) { 
 
   }
@@ -29,6 +31,7 @@ export class LoginPage implements OnInit {
   login(){
      this.auth.autenticar(this.creds).subscribe(response=>{
        this.auth.successfulLogin(response.headers.get('Authorization'));   
+       this.cartService.createOrClearCart();
        this.router.navigate(['folder/Inbox']);
       
      }, erro=>{
