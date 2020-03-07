@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/Cart';
 import { CartService } from 'src/app/services/cart.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProdutoDTO } from 'src/app/models/Produto.dto';
 import { StorageService } from 'src/app/services/storage.service';
+import { LocalUser } from 'src/app/models/local-user';
+import { ClienteDTO } from 'src/app/models/cliente.dto';
+import { ClienteService } from 'src/app/services/domain/cliente.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,17 +15,22 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class CartPage implements OnInit {
 
-  cart: Cart;
+  cart: Cart;  
+
   constructor(private cartService: CartService,
               private route: Router,
-              private storageService: StorageService) { }
+              private storageService: StorageService,
+              private clienteService: ClienteService) { }
 
   ngOnInit() {
     this.cart = this.cartService.getCart();
   }
 
+
+
   ionViewDidEnter(){
     this.cart = this.cartService.getCart();
+    
   
   }
   apagarCarrinho(){
@@ -48,6 +56,13 @@ export class CartPage implements OnInit {
 
   total(){
     return this.cartService.total();
+  }
+
+  finalizarCompra(){
+
+    this.route.navigate(['escolher-enderecos']);
+
+    
   }
 
 

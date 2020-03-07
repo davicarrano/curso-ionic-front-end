@@ -18,6 +18,16 @@ import { CartService } from './services/cart.service';
 import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClienteService } from './services/domain/cliente.service';
+import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+
+export function jwtOptionsFactory(storage) {
+  return {
+    tokenGetter: () => {
+      return storage.get('access_token');
+    },
+    whitelistedDomains: ['localhost:5000']
+  }
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +38,13 @@ import { ClienteService } from './services/domain/cliente.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,    
+    JwtModule.forRoot({
+      jwtOptionsProvider: {provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [StorageService],
+      }
+    })
   ],
   providers: [
     StatusBar,
@@ -41,8 +57,10 @@ import { ClienteService } from './services/domain/cliente.service';
     ProdutoService,
     CartService,
     ClienteService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    
   ],
+  
   exports:[
     ReactiveFormsModule,
     FormsModule

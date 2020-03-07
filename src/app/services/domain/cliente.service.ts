@@ -12,10 +12,13 @@ export class ClienteService{
 
     }
 
-    findByEmail(email: string): Observable<ClienteDTO> {
-        return this.http.get<ClienteDTO>(`${API_CONFIG.baseUrl}/clientes/porEmail?valor=${email}`);
+    findByEmail(email: string) {
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/porEmail?valor=${email}`);
     }
 
+    findById(id: string){
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/${id}`);
+    }
     getImageFromBucket(id:string):Observable<any>{
         let url = `${API_CONFIG.bucketUrl}/profile${id}.jpg`;
         //let he : HttpHeaders = new HttpHeaders();

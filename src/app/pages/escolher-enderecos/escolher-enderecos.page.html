@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>escolher-enderecos</ion-title>
+    <ion-title>Escolha o endereços</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-list *ngFor="let e of enderecos">
+    <ion-item>
+      <ion-button (click)="selecionar(e.id)">
+        <h2>{{e.logradouro}}</h2>
+        <!-- <p>{{e.numero}}</p>
+        <p>{{e.beirro}}</p>
+        <p>{{e.cep}}</p>
+        <p>{{e.cidade}}</p> -->
+
+      </ion-button>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

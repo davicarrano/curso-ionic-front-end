@@ -42,6 +42,7 @@
 
 
   <ion-button expand="full" color="primary" (click)="addNovoItem()">Adicionar Novo Item</ion-button>
-  <ion-button *ngIf="cart.items.length != 0" expand="full" color="danger" (click)="apagarCarrinho()">Apagar carrinho</ion-button>
+  <ion-button *ngIf="cart.items.length != 0" expand="full" color="primary" (click)="finalizarCompra()">Finalizar Compra</ion-button>
+
 
 </ion-content>

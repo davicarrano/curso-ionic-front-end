@@ -42,6 +42,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     let localUser :LocalUser = this.storage.getLocalUser();
+    
     if (localUser!=null){
       this.router.navigate(['folder/Inbox']);
     }

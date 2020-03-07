@@ -28,9 +28,9 @@ export class AppComponent implements OnInit {
       icon: 'list'
     },
     {
-      title: 'Signup',
-      url: '/signup',
-      icon: 'log-in'
+      title: 'Profile',
+      url: '/profile',
+      icon: 'person'
     }
 
   ];

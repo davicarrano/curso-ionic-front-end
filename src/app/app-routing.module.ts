@@ -27,7 +27,8 @@ const routes: Routes = [
   {
     path: 'produto-detalhe/:produto',
     loadChildren: () => import('./pages/produto-detalhe/produto-detalhe.module').then( m => m.ProdutoDetalhePageModule)
-  },  {
+  },
+  {
     path: 'cart',
     loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
   },
@@ -38,6 +39,14 @@ const routes: Routes = [
   {
     path: 'escolher-enderecos',
     loadChildren: () => import('./pages/escolher-enderecos/escolher-enderecos.module').then( m => m.EscolherEnderecosPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'payment/:pedido',
+    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
   }
 
 
