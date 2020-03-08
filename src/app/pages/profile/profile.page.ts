@@ -25,7 +25,7 @@ export class ProfilePage implements OnInit {
 
   loadData(){
     let user:LocalUser = this.storage.getLocalUser();
-    console.log(user);
+    
     if (user){
       this.clienteService.findByEmail(user.email).subscribe(response=>{
         this.clienteLogado = response as ClienteDTO;

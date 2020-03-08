@@ -67,7 +67,6 @@ export class CartService {
         let position = cart.items.findIndex(x => x.produto.id == prod.id);
         if (position != -1){
             cart.items[position].quantidade --;
-            console.log("Quantidade do produto:"+cart.items[position].quantidade);
             if (cart.items[position].quantidade == 0){
                 cart = this.removerProduto(prod);
             }

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirmação do Pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Itens do Pedido</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of itemsCart" >
+          <h2>{{item.produto.nome}}</h2>
+          <p>{{item.produto.preco | currency}}</p>
+          <p>{{item.quantidade}}</p>
+          <p>{{item.quantidade* item.produto.preco}}</p>
+        </ion-item>
+        <ion-item>
+          <h2>Total</h2>          
+          <p>{{total() | currency}}</p>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Cliente</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+
+      <ion-list>
+        <ion-item>
+          <h2>{{cliente?.nome}}</h2>
+          <p>{{cliente?.email}}</p>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Endereço de Entrega</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <h2>{{endereco?.logradouro}}</h2>
+          <p>{{endereco?.bairro}}</p>
+          <p>{{endereco?.cep}}</p>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Pagamento</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngIf="pedido.pagamento['@type']=='pagamentoComBoleto'">
+          <h2>Pagamento com Boleto</h2>
+        </ion-item>
+        <ion-item *ngIf="pedido.pagamento['@type']=='pagamentoComCartao'">
+          <h2>Pagamento com Cartão</h2>
+          <p>{{pedido.pagamento.numeroDeParcelas}}</p>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button color="primary" (click)="finalizarPedido()"> Finalizar Pedido</ion-button>
+
+
+
+</ion-content>

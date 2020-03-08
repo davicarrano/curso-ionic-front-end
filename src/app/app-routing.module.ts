@@ -45,9 +45,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
-    path: 'payment/:pedido',
+    path: 'payment',
     loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
+  },
+ 
+  {
+    path: 'confirmacao-pedido',
+    loadChildren: () => import('./pages/confirmacao-pedido/confirmacao-pedido.module').then( m => m.ConfirmacaoPedidoPageModule)
   }
+
+
 
 
 

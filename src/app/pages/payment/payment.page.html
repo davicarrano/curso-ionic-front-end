@@ -1,9 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>payment</ion-title>
+    <ion-title>Forma de Pgto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="formGroupPagamento" (ngSubmit)="proximaEtapa(); $event.preventDefault()"> 
+    <ion-list>
+      <ion-radio-group formControlName="@type">
+        <ion-list-header>
+          <ion-label>
+            Tipo de pagamento
+          </ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Pagamento com Boleto</ion-label>
+          <ion-radio slot="start" value="pagamentoComBoleto" ></ion-radio>
+        </ion-item>
 
+        <ion-item>
+          <ion-label>Pagamento com Cartão</ion-label>
+          <ion-radio slot="start" value="pagamentoComCartao" ></ion-radio>
+        </ion-item>
+    
+      </ion-radio-group>
+  
+    </ion-list>
+  
+    <ion-list *ngIf="formGroupPagamento.value['@type'] == 'pagamentoComCartao'">
+      <ion-list-header>
+        <ion-label>
+          Escolha o número de parcelas
+        </ion-label>
+      </ion-list-header>
+    
+      <ion-item >
+        <ion-label>Parcelas</ion-label>
+        <ion-select placeholder="Selecione um número" formControlName="numeroDeParcelas">
+          <ion-select-option *ngFor="let p of parcelas" value="{{p}}">{{p}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+    </ion-list>
+  
+    <ion-button color="primary" type="submit" [disabled]="formGroupPagamento.invalid" >Próximo</ion-button>
+  </form>
 </ion-content>

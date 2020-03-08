@@ -6,7 +6,7 @@ import { LocalUser } from 'src/app/models/local-user';
 import { StorageService } from 'src/app/services/storage.service';
 import { PedidoDTO } from 'src/app/models/pedido.dto';
 import { Cart } from 'src/app/models/Cart';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-escolher-enderecos',
@@ -33,13 +33,13 @@ export class EscolherEnderecosPage implements OnInit {
         this.enderecos = response['enderecos'];
         this.pedido = {
           cliente: {id: response['id']},
-          endereco:null,
+          enderecoDeEntrega:null,
           pagamento:null,          
           itens: cart.items.map(x => {return {quantidade: x.quantidade, 
                                               produto: {id: x.produto.id}}})
         }
         
-        console.log(this.pedido);
+        
       },erro=>{
 
       });
@@ -47,8 +47,14 @@ export class EscolherEnderecosPage implements OnInit {
   }
 
   selecionar(enderecoId){
-    this.pedido.endereco = {id: enderecoId};
-    this.route.navigate([`payment/${JSON.stringify(this.pedido)}`]);
+    this.pedido.enderecoDeEntrega = {id: enderecoId};
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          pedido: JSON.stringify(this.pedido)
+          
+      }
+    };
+    this.route.navigate(['payment'],navigationExtras);
   }
 
   

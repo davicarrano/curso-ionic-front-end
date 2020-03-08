@@ -33,7 +33,6 @@ export class AuthService{
 
     successfulLogin( token: string){
         let tok = token.substring(7);
-        console.log("this.jwtHelper.decodeToken(tok): ",this.jwtHelper.decodeToken(tok));
         let user : LocalUser = {
             token: tok,
             email: this.jwtHelper.decodeToken(tok).sub

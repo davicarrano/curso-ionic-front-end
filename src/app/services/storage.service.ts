@@ -36,8 +36,7 @@ export class StorageService{
 
     setCart(obj: Cart){
         if (obj == null){
-            localStorage.removeItem(STORAGE_KEYS.cart);    
-            console.log('removeu o carrinho');
+            localStorage.removeItem(STORAGE_KEYS.cart);   
         }else{
             localStorage.setItem(STORAGE_KEYS.cart,JSON.stringify(obj));
         }

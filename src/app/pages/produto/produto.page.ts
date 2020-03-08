@@ -27,7 +27,7 @@ export class ProdutoPage implements OnInit {
     },erro=>{
       console.error(erro);
     },()=>{
-      console.log('Terminou buscar produtos!'); 
+      
     })
   }
 
