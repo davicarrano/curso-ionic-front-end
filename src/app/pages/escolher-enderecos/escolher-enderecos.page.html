@@ -6,17 +6,16 @@
 
 <ion-content>
 
-  <ion-list *ngFor="let e of enderecos">
-    <ion-item>
-      <ion-button (click)="selecionar(e.id)">
-        <h2>{{e.logradouro}}</h2>
-        <!-- <p>{{e.numero}}</p>
-        <p>{{e.beirro}}</p>
-        <p>{{e.cep}}</p>
-        <p>{{e.cidade}}</p> -->
-
-      </ion-button>
-    </ion-item>
-  </ion-list>
-
+  <ion-card *ngFor="let e of enderecos" (click)="selecionar(e.id)">
+    <ion-card-header>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <h2>{{e.logradouro}}</h2>
+      <p>{{e.numero}}</p>
+      <p>{{e.beirro}}</p>
+      <p>{{e.cep}}</p>
+      <p>{{e.cidade?.nome}}</p>
+  </ion-card-content>
+  </ion-card>
 </ion-content>

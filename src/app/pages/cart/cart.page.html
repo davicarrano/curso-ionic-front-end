@@ -15,11 +15,18 @@
     </ion-card-header>
   
     <ion-card-content>
-      <ion-icon color="primary" name="add-circle" (click)="incrementarQuantidadeProduto(item?.produto)"></ion-icon>
-      Qtd: {{item?.quantidade}}
-      <ion-icon color="primary" name="remove-circle" (click)="decrementarQuantidadeProduto(item?.produto)"></ion-icon>
-      <ion-icon color="danger" name="trash-outline" (click)="removerProduto(item?.produto)"></ion-icon>
-      <p>Preço: {{item?.produto.preco | currency}}</p>
+      <ion-list>
+        <ion-item lines="none">
+          <p>Preço: {{item?.produto.preco | currency}}</p>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon color="primary" name="add-circle" (click)="incrementarQuantidadeProduto(item?.produto)"></ion-icon>
+          Qtd: {{item?.quantidade}}
+          <ion-icon color="primary" name="remove-circle" (click)="decrementarQuantidadeProduto(item?.produto)"></ion-icon>
+          <ion-icon slot="end" color="danger" name="trash-outline" (click)="removerProduto(item?.produto)"></ion-icon>
+        </ion-item>
+    
+      </ion-list>
     </ion-card-content>
   </ion-card>
 
@@ -35,7 +42,7 @@
 
   <ion-card *ngIf="cart.items.length != 0">
     <ion-card-header>
-      <ion-card-title>Total: {{total()}}</ion-card-title>
+      <ion-card-title>Total: {{total() | currency}}</ion-card-title>
     </ion-card-header>
   
   </ion-card>

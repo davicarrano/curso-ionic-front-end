@@ -41,7 +41,6 @@ export class ConfirmacaoPedidoPage implements OnInit {
 
   ngOnInit() {
     this.clienteService.findById(this.pedido.cliente.id).subscribe(response=>{
-      console.log("Response retornado",response);
       console.log("Pedido ate aqui",this.pedido);
       this.cliente = response as ClienteDTO;
       this.endereco = this.findEndereco(this.pedido.enderecoDeEntrega.id, response['enderecos']);
@@ -52,7 +51,8 @@ export class ConfirmacaoPedidoPage implements OnInit {
   }
 
   findEndereco(id: string, list: EnderecoDTO[]){
-    let position = list.findIndex(x => x.id = id);
+    console.log("Lista de enderecos",list);
+    let position = list.findIndex(x => x.id == id);
     return list[position];
   }
 
